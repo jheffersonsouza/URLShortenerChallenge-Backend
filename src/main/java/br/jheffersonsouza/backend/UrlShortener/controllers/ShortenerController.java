@@ -1,6 +1,6 @@
-package br.jheffersonsouza.backend.controllers;
+package br.jheffersonsouza.backend.UrlShortener.controllers;
 
-import br.jheffersonsouza.backend.service.UrlShortenerService;
+import br.jheffersonsouza.backend.UrlShortener.service.UrlShortenerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @RestController
+@RequestMapping("/api")
 public class ShortenerController {
     @Autowired
     UrlShortenerService urlShortenerService;
