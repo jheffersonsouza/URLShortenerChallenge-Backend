@@ -11,7 +11,7 @@ O objetivo é avaliar suas habilidades de desenvolvimento backend: arquitetura d
 
 - A linguagem de programação e os frameworks utilizados são de **livre escolha**.
 - O `shortCode` deve ser **curto** e conter **apenas caracteres alfanuméricos** (`A-Z`, `a-z`, `0-9`).
-- O shortCode pode ser gerado automaticamente (ex: aleatório, base62 ou hash parcial).
+- O shortCode pode ser gerado automaticamente por alguma biblioteca.
 - URLs e shortCodes podem ser armazenados **em memória**. Persistência em arquivo ou banco é opcional.
 - Devem ser usados status HTTP adequados:
     - `201 Created` para criação bem-sucedida no encurtamento.
@@ -47,7 +47,7 @@ O objetivo é avaliar suas habilidades de desenvolvimento backend: arquitetura d
 Esses itens são opcionais, mas agregarão pontos positivos.
 
 - **Persistência de dados**:
-    - Armazenar URLs em arquivo local (ex: JSON) ou banco de dados (ex: SQLite).
+    - Armazenar URLs em arquivo local (ex: JSON) ou banco de dados (ex: MongoDB).
 
 - **Expiração de URLs**:
     - URLs expiram após determinado tempo (ex: 24 horas).
@@ -59,7 +59,7 @@ Esses itens são opcionais, mas agregarão pontos positivos.
     - Permitir que o usuário escolha um shortCode customizado, validando unicidade e formato.
 
 - **Validação da URL (entrada)**:
-    - Verificar se a URL recebida é válida e retornar `400 Bad Request` em caso de erro.
+    - Verificar se a URL recebida é válida e retorna um erro se for preciso.
 
 - **Deploy**:
     - Publicar a aplicação em ambiente gratuito (ex: Vercel, Render, Railway).
