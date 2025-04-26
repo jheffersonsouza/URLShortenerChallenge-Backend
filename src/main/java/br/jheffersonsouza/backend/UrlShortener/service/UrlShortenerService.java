@@ -1,23 +1,25 @@
 package br.jheffersonsouza.backend.UrlShortener.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Random;
 
 @Service
-@RequiredArgsConstructor
 public class UrlShortenerService {
-    private final int shortenurl_length = 6;
-    private HashMap<String, String> urls;
+    private final HashMap<String, String> urls;
 
-    private final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    public UrlShortenerService() {
+        this.urls = new HashMap<>();
+    }
+
     private final Random RANDOM = new Random();
     private String randomShortURL(){
+        int shortenurl_length = 6;
         StringBuilder sb = new StringBuilder(shortenurl_length);
         for (int i = 0; i < shortenurl_length; i++) {
+            String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             int randomIndex = RANDOM.nextInt(CHARACTERS.length());
             sb.append(CHARACTERS.charAt(randomIndex));
         }
