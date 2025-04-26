@@ -1,5 +1,6 @@
 package br.jheffersonsouza.backend.UrlShortener.service;
 
+import br.jheffersonsouza.backend.UrlShortener.dto.ShortenedUrl;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -8,7 +9,6 @@ import java.util.Random;
 @Service
 public class UrlShortenerService {
     private final HashMap<String, String> urls;
-
 
     public UrlShortenerService() {
         this.urls = new HashMap<>();
@@ -26,13 +26,13 @@ public class UrlShortenerService {
         return sb.toString();
     }
 
-    public String shorten(String originalUrl){
+    public ShortenedUrl shorten(String originalUrl){
         String shortenedUrl = randomShortURL();
         while (urls.containsKey(shortenedUrl)){
             shortenedUrl = randomShortURL();
         }
         urls.put(shortenedUrl, originalUrl);
-        return shortenedUrl;
+        return new ShortenedUrl(shortenedUrl);
     }
 
     public String getOriginalUrl(String shortenedUrl){
