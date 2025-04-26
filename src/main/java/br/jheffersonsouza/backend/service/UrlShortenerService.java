@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.Random;
 
 @Service
-public class ShortenService {
-    private int shortenurl_length = 6;
-    private HashMap<String, URL> urls;
+public class UrlShortenerService {
+    private final int shortenurl_length = 6;
+    private final HashMap<String, String> urls;
 
-    public ShortenService() {
+    public UrlShortenerService() {
         this.urls = new HashMap<>();
     }
 
@@ -26,15 +26,16 @@ public class ShortenService {
         return sb.toString();
     }
 
-    public void shorten(URL originalUrl){
+    public String shorten(String originalUrl){
         String shortenedUrl = randomShortURL();
         while (urls.containsKey(shortenedUrl)){
             shortenedUrl = randomShortURL();
         }
         urls.put(shortenedUrl, originalUrl);
+        return shortenedUrl;
     }
 
-    public URL getOriginalUrl(String shortenedUrl){
+    public String getOriginalUrl(String shortenedUrl){
         return urls.get(shortenedUrl);
     }
 
