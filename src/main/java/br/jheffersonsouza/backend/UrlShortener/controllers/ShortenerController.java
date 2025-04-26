@@ -22,11 +22,10 @@ public class ShortenerController {
     @PostMapping("/shorten")
     @Operation(summary = "Shorten an URL.",
             responses = {
-                    @ApiResponse(responseCode = "200")
+                    @ApiResponse(responseCode = "201", description = "Created shortened url")
             })
     public ResponseEntity<ShortenedUrl> shorten(@RequestParam String url) {
-        return ResponseEntity.ok(urlShortenerService.shorten(url));
-
+        return ResponseEntity.status(HttpStatus.CREATED).body(urlShortenerService.shorten(url));
     }
 
     @GetMapping("/{shortenedUrl}")
@@ -35,7 +34,7 @@ public class ShortenerController {
                     @ApiResponse(responseCode = "200"),
                     @ApiResponse(responseCode = "404", description = "URL not found")
             })
-    public ResponseEntity getOriginalURL(@PathVariable String shortenedUrl) {
+    public ResponseEntity<Void> getOriginalURL(@PathVariable String shortenedUrl) {
         shortenedUrl = urlShortenerService.getOriginalUrl(shortenedUrl);
         if (shortenedUrl == null) {
             return ResponseEntity.notFound().build();
