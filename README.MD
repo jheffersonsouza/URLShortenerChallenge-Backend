@@ -7,7 +7,7 @@ O objetivo é avaliar suas habilidades de desenvolvimento backend: arquitetura d
 
 ---
 
-## Regras e Tecnologia
+## Regras
 
 - A linguagem de programação e os frameworks utilizados são de **livre escolha**.
 - O `shortCode` deve ser **curto** e conter **apenas caracteres alfanuméricos** (`A-Z`, `a-z`, `0-9`).
